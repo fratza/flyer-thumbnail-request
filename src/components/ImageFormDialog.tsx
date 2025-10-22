@@ -99,7 +99,7 @@ export const ImageFormDialog = ({
 
     try {
       const response = await fetch(
-        "https://n8n.n-compass.online/webhook-test/request-form",
+        "https://n8n.n-compass.online/webhook/request-form",
         {
           method: "POST",
           body: formData,
