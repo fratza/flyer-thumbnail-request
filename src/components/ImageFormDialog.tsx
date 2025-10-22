@@ -17,14 +17,14 @@ interface ImageFormDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   imageSrc: string;
-  templateId: string;
+  thumbnail_id: string;
 }
 
 export const ImageFormDialog = ({
   open,
   onOpenChange,
   imageSrc,
-  templateId,
+  thumbnail_id,
 }: ImageFormDialogProps) => {
   const [storeName, setStoreName] = useState("");
   const [email, setEmail] = useState("");
@@ -89,7 +89,7 @@ export const ImageFormDialog = ({
 
     const submitted_at = new Date().toISOString();
     const formData = new FormData();
-    formData.append("id", templateId);
+    formData.append("thumbnail_id", thumbnail_id);
     formData.append("storeName", storeName);
     formData.append("email", email);
     formData.append("submitted_at", submitted_at);

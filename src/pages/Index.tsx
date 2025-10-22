@@ -4,14 +4,14 @@ import { ImageFormDialog } from "@/components/ImageFormDialog";
 import { Button } from "@/components/ui/button";
 
 interface Template {
-  id: string;
+  thumbnail_id: string;
   thumbnail_url: string;
   preview: string;
 }
 
 const Index = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [selectedTemplateId, setSelectedTemplateId] = useState<string | null>(
+  const [selectedThumbnailId, setSelectedThumbnailId] = useState<string | null>(
     null,
   );
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -59,7 +59,7 @@ const Index = () => {
 
   const handleImageClick = (image: Template) => {
     setSelectedImage(image.preview);
-    setSelectedTemplateId(image.id);
+    setSelectedThumbnailId(image.thumbnail_id);
     setDialogOpen(true);
   };
 
@@ -80,7 +80,7 @@ const Index = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-300">
           {images.slice(0, visibleCount).map((image) => (
             <GalleryCard
-              key={image.id}
+              key={image.thumbnail_id}
               image={image.preview}
               onClick={() => handleImageClick(image)}
             />
@@ -102,12 +102,12 @@ const Index = () => {
       </div>
 
       {/* Dialog */}
-      {selectedImage && selectedTemplateId && (
+      {selectedImage && selectedThumbnailId && (
         <ImageFormDialog
           open={dialogOpen}
           onOpenChange={setDialogOpen}
           imageSrc={selectedImage}
-          templateId={selectedTemplateId}
+          thumbnail_id={selectedThumbnailId}
         />
       )}
     </div>
